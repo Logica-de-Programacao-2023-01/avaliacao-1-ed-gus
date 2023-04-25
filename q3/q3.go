@@ -1,5 +1,9 @@
 package q3
 
+import (
+	"fmt"
+)
+
 //Você recebe um tabuleiro retangular de M x N quadrados. Além disso, você tem um número ilimitado de peças de dominó
 //padrão de 2 x 1 quadrados. Você pode girar as peças. Você deve colocar o máximo de peças de dominó possível no
 //tabuleiro, seguindo as seguintes condições:
@@ -13,6 +17,17 @@ package q3
 //Se M ou N forem iguais ou menores que 0, a função deve retornar um erro.
 
 func DominoPieces(m, n int) (int, error) {
-	// Seu código aqui
-	return 0, nil
+	if m <= 0 || n <= 0 {
+		return 0, fmt.Errorf("O valor das colunas e linhas devem ser maior que 0")
+	}
+	var dominos int
+	if m%2 == 0 {
+		dominos = m * n / 2
+	} else if n%2 == 0 {
+		dominos = m * n / 2
+	} else {
+		dominos = (m*n - 1) / 2
+	}
+
+	return dominos, nil
 }
